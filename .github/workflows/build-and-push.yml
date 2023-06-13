@@ -1,0 +1,21 @@
+name: Build and Push Booking Service to Container Registry
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    name: Build and push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build Docker image
+        run: docker run --rm -v "$(pwd)":/home/rust/src blackdex/rust-musl:x86_64-musl-stable-1.70.0-openssl3  cargo build --release
+      - name: Login to registry
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} cloud.canister.io:5000
+      - name: Push image
+        run: docker push samuel19982/css-inliner-server:latest
