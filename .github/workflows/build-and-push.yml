@@ -1,4 +1,4 @@
-name: Build and Push Booking Service to Container Registry
+name: Build and Push CSS Inline Server to Docker Hub
 
 on:
   push:
