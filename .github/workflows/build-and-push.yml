@@ -16,6 +16,6 @@ jobs:
       - name: Build Docker image
         run: docker run --rm -v "$(pwd)":/home/rust/src blackdex/rust-musl:x86_64-musl-stable-1.70.0-openssl3  cargo build --release
       - name: Login to registry
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} cloud.canister.io:5000
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Push image
         run: docker push samuel19982/css-inliner-server:latest
