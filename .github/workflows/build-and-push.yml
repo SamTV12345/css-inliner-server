@@ -15,11 +15,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Build Docker image
         run: docker run --rm -v "$(pwd)":/home/rust/src blackdex/rust-musl:x86_64-musl-stable-1.70.0-openssl3  cargo build --release
-      - name: Cache Rust crates
+      - name: Cache Primes
+        id: cache-primes
         uses: actions/cache@v3
         with:
-          path: |
-            ./target
+          path: ./target
+          key: ${{ runner.os }}-primes
       - name: Build Docker image
         run: docker build -t samuel19982/css-inliner-server:latest .
       - name: Login to registry
