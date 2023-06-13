@@ -22,7 +22,7 @@ jobs:
           path: ./target
           key: ${{ runner.os }}-primes
       - name: Build Docker image
-        run: docker build -t samuel19982/css-inliner-server:latest .
+        run: docker build build -t samuel19982/css-inliner-server:latest linux .
       - name: Login to registry
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Push image
