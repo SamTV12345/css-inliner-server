@@ -1,11 +1,9 @@
 use actix_web::{App, HttpResponse, HttpServer, Responder, web};
-use css_inline::inline;
 use log::error;
 use utoipa::ToSchema;
 use utoipa_swagger_ui::SwaggerUi;
 use utoipa::{
-    openapi::security::{ApiKey, ApiKeyValue, SecurityScheme},
-    Modify, OpenApi,
+    OpenApi,
 };
 use serde::{Deserialize, Serialize};
 use actix_web::post;
